@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast'
 import signup from '../../assert/login/download.png'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {createUser}= useContext(AuthContext)
+    const {createUser, updateUser}= useContext(AuthContext)
 
     const handleSignUp= event =>{
         event.preventDefault();
@@ -16,6 +17,15 @@ const SignUp = () => {
         .then(result=>{
             const user = result.user;
             console.log(user)
+            toast('user created successfully')
+            const userInfo ={
+              displayName: user.Name,
+
+
+            }
+            updateUser(userInfo)
+            .then(()=>{})
+            .catch(err => console.log(err))
         })
         .catch(err=>{
             console.error(err)
