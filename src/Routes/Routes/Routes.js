@@ -30,6 +30,11 @@ export const router = createBrowserRouter([
                 element:<Royal></Royal>
             },
             {
+                path:'/royalDetails/:id',
+                element:<RoyalDetail></RoyalDetail>,
+                loader:({params})=>fetch(`http://localhost:5000/royalBikes/${params.id}`)
+            },
+            {
                 path:'/suzuki',
                 element:<Suzuki></Suzuki>
             },

@@ -5,7 +5,7 @@ const Royal = () => {
     const [royals,setRoyals] = useState([])
 
     useEffect(()=>{
-        fetch('enfield.json')
+        fetch('http://localhost:5000/royalBikes')
         .then(res=>res.json())
         .then(data=>setRoyals(data))
     },[])
