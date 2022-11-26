@@ -7,6 +7,7 @@ import Yamaha from "../../Pages/Yamaha/Yamaha";
 import RoyalDetail from "../../Pages/RoyalDetail/RoyalDetail"
 import Royal from "../../Pages/Royal/Royal";
 import SignUp from "../../Pages/SignUp/SignUp";
+import SuzukiDetails from "../../Pages/SuzukiDetails/SuzukiDetails";
 
 export const router = createBrowserRouter([
     {
@@ -39,13 +40,18 @@ export const router = createBrowserRouter([
                 element:<Suzuki></Suzuki>
             },
             {
+                path:'/suzukiDetails/:id',
+                element:<SuzukiDetails></SuzukiDetails>,
+                loader:({params})=>fetch(`http://localhost:5000/suzukiBike/${params.id}`)
+            },
+            {
                 path:'/Yamaha',
                 element:<Yamaha></Yamaha>
             },
-            {
-                path:'/royalDetail',
-                element:<RoyalDetail></RoyalDetail>
-            },
+            // {
+            //     path:'/royalDetail',
+            //     element:<RoyalDetail></RoyalDetail>
+            // },
         ]
     }
 ])

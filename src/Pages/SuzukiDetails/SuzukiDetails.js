@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const RoyalDetail = () => {
+const SuzukiDetails = () => {
     const {img,title,sellerName,resalePrice,originalPrice,users,dates,description} = useLoaderData();
     return (
         <div className='items-center justify-center'>
@@ -27,4 +27,4 @@ const RoyalDetail = () => {
     );
 };
 
-export default RoyalDetail;
+export default SuzukiDetails;

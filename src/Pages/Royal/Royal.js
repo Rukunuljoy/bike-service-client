@@ -11,9 +11,6 @@ const Royal = () => {
     },[])
     return (
         <div>
-            <div>
-                <h2>this is Royal</h2>
-            </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-10 mt-10'>
                 {
                     royals.map(data=><RoyalCard
