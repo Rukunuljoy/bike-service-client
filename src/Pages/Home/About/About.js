@@ -3,7 +3,7 @@ import img1 from '../../../assert/banner/moto.jpg'
 
 const About = () => {
   return (
-    <div className="hero w-full mb-10 mt-10 rounded-lg px-12 py-12 bg-gray-300">
+    <div className="hero w-full mb-10 mt-10 rounded-lg px-12 py-12 text-black bg-gray-300">
       <div className="hero-content flex-col lg:flex-row">
         <img
           src={img1}

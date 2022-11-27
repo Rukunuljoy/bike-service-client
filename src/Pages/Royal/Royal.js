@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import RoyalCard from './RoyalCard';
+import { useQuery } from '@tanstack/react-query'
+import BookingModal from '../RoyalDetail/BookingModal';
 
 const Royal = () => {
-    const [royals,setRoyals] = useState([])
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/royalBikes')
-        .then(res=>res.json())
-        .then(data=>setRoyals(data))
-    },[])
+ const {data:royals = []} = useQuery({
+        queryKey: ['royalBikes'],
+        queryFn:async() =>{
+           const res= await fetch('http://localhost:5000/royalBikes')
+           const data = await res.json();
+           return data;
+        }
+        
+    })
+
     return (
         <div>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-10 mt-10'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 m-20'>
                 {
                     royals.map(data=><RoyalCard
                     key={data.id}
@@ -19,6 +25,7 @@ const Royal = () => {
                     ></RoyalCard>)
                 }
             </div>
+            
         </div>
     );
 };

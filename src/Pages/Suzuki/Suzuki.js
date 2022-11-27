@@ -1,21 +1,24 @@
-import React, { useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query'
 import SuzukiCard from './SuzukiCard';
 
 const Suzuki = () => {
-    const [suzuki, setSuzuki] = useLoaderData([]);
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/suzukiBike')
-        .then(res=>res.json())
-        .then(data=>setSuzuki(data))
-    },[])
+    const {data:suzuki = []} = useQuery({
+        queryKey: ['suzukiBike'],
+        queryFn:async() =>{
+           const res= await fetch('http://localhost:5000/suzukiBike')
+           const data = await res.json();
+           return data;
+        }
+        
+    })
     return (
-        <div>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-10 mt-10'>
             {
                 suzuki.map(service=><SuzukiCard
-                key={service.id}
-                data={service}
+                key={service._id}
+                service={service}
                 ></SuzukiCard>)
             }
         </div>

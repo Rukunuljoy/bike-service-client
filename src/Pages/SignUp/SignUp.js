@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast'
 import signup from '../../assert/login/download.png'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const {createUser, updateUser}= useContext(AuthContext)
+    const navigate = useNavigate();
 
     const handleSignUp= event =>{
         event.preventDefault();
@@ -24,7 +25,9 @@ const SignUp = () => {
 
             }
             updateUser(userInfo)
-            .then(()=>{})
+            .then(()=>{
+              navigate('/')
+            })
             .catch(err => console.log(err))
         })
         .catch(err=>{

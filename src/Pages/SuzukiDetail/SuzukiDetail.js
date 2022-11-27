@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../RoyalDetail/BookingModal';
 
-const SuzukiDetails = () => {
+const SuzukiDetail = () => {
     const {img,title,sellerName,resalePrice,originalPrice,users,dates,description} = useLoaderData();
     return (
         <div className='items-center justify-center'>
@@ -13,18 +14,16 @@ const SuzukiDetails = () => {
           <h2 className="card-title">{title}</h2>
           <p>Seller-Name: {sellerName}</p>
           <p>Description: {description}</p>
-          <p>SellerName :{sellerName}</p>
           <p>ResalePrice: {resalePrice}</p>
           <p>originalPrice: {originalPrice}</p>
           <p>Years-of-use: {users}</p>
           <p>Post-date:{dates}</p>
-          <div className="card-actions">
-            <button className="btn btn-primary">Book Now</button>
-          </div>
         </div>
       </div>
+      
         </div>
+  
     );
 };
 
-export default SuzukiDetails;
+export default SuzukiDetail;
