@@ -1,11 +1,20 @@
-import React  from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 const RoyalDetail = () => {
-    const {img,title,sellerName,resalePrice,originalPrice,users,dates,description} = useLoaderData();
-    return (
-        <div className='items-center justify-center'>
-            <div className="card m-20 shadow-xl">
+  const {
+    img,
+    title,
+    sellerName,
+    resalePrice,
+    originalPrice,
+    users,
+    dates,
+    description,
+  } = useLoaderData();
+  return (
+    <div className="items-center justify-center">
+      <div className="card m-20 shadow-xl">
         <figure className="px-10 pt-10">
           <img src={img} alt="Shoes" className="rounded-xl" />
         </figure>
@@ -19,8 +28,8 @@ const RoyalDetail = () => {
           <p>Post-date:{dates}</p>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default RoyalDetail;

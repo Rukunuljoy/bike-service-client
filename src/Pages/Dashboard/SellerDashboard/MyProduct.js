@@ -7,19 +7,19 @@ const MyProduct = () => {
     const { user } = useContext(AuthContext);
 
     const { data: myBike1 = [] } = useQuery({
-        queryKey: ['myCars1'],
+        queryKey: ['myBike1'],
         queryFn: () => fetch(`http://localhost:5000/myRoyal?sellerName=${user.displayName}`)
             .then(res => res.json())
     });
 
     const { data: myBike2 = [] } = useQuery({
-        queryKey: ['myCars2'],
+        queryKey: ['myBike2'],
         queryFn: () => fetch(`http://localhost:5000/mySuzuki?sellerName=${user.displayName}`)
             .then(res => res.json())
     });
 
     const { data: myBike3 = [] } = useQuery({
-        queryKey: ['myCars3'],
+        queryKey: ['myBike3'],
         queryFn: () => fetch(`http://localhost:5000/myYamaha?sellerName=${user.displayName}`)
             .then(res => res.json())
     });

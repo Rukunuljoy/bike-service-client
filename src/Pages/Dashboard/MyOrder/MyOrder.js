@@ -24,7 +24,7 @@ const MyOrders = () => {
 
   return (
     <div className="mb-[500px]">
-      <h3 className="text-3xl text-center">My Orders</h3>
+      <h3 className="text-3xl ml-10 mb-10 text-center">My Orders</h3>
 
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -52,7 +52,7 @@ const MyOrders = () => {
                       <button className="btn">PAY NOW</button>
                     </Link>
                   )}
-                  {booking.originalPrice && booking.paid && (
+                  {booking?.originalPrice && booking.paid && (
                     <span className="text-2xl text-orange-700 font-bold">
                       Paid
                     </span>

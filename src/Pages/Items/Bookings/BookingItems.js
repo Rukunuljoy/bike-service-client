@@ -15,7 +15,7 @@ const BookingItems = ({ nameOfBike }) => {
         const email = form.email.value;
         const title = form.title.value;
         const phone = form.phone.value;
-        const location = form.location.value;
+        // const location = form.location.value;
 
         const booking = {
             name,
@@ -24,7 +24,7 @@ const BookingItems = ({ nameOfBike }) => {
             originalPrice,
             title,
             phone,
-            location
+           
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',

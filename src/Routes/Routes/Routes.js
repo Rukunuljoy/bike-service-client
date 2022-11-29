@@ -91,15 +91,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AdminRoute><AddProduct></AddProduct></AdminRoute>
+                element: <AddProduct></AddProduct>
             },
             {
                 path: '/dashboard/myProduct',
-                element: <AdminRoute><MyProduct></MyProduct></AdminRoute>
+                element: <MyProduct></MyProduct>
             },
             {
                 path: '/dashboard/myBuyer',
-                element: <AdminRoute><MyBuyer></MyBuyer></AdminRoute>
+                element: <MyBuyer></MyBuyer>
             },
             {
                 path:'/dashboard/payment/:id',
