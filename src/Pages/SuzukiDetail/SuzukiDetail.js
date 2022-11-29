@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import BookingModal from '../RoyalDetail/BookingModal';
 
 const SuzukiDetail = () => {
     const {img,title,sellerName,resalePrice,originalPrice,users,dates,description} = useLoaderData();

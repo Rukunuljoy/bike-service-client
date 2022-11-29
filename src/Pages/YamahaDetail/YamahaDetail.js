@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import BookingModal from '../RoyalDetail/BookingModal';
 
 const YamahaDetail = () => {
     const {img,title,sellerName,resalePrice,originalPrice,users,dates,description} = useLoaderData();
@@ -21,7 +20,6 @@ const YamahaDetail = () => {
       <p>Post-date:{dates}</p>
     </div>
   </div>
-  
     </div>
     );
 };

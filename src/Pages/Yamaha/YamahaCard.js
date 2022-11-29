@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BookingModal from '../RoyalDetail/BookingModal';
 
-const YamahaCard = ({ser}) => {
-    const {_id,img,title,resalePrice,sellerName,users,dates,originalPrice,description} = ser;
+const YamahaCard = ({yamaha}) => {
+    const {_id,img,title,resalePrice,sellerName,users,dates,originalPrice,description} = yamaha;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 text-black bg-indigo-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img src={img} alt="Shoes" className="rounded-xl" />
         </figure>

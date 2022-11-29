@@ -1,44 +1,49 @@
-import { data } from "autoprefixer";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 import {AuthContext} from '../../Contexts/AuthProvider/AuthProvider' 
 
 const BookingModal = () => {
 
   const {user}= useContext(AuthContext)
-  // fetch("http://localhost:5000/royalEnfield", {
-  //   method: "POST",
-  //   headers: {
-  //     "content-type": "application/json",
-  //   },
-  //   body: JSON.stringify(),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log(data);
-  // if(data.acknowledge){
-        
-    //     // toast.success("Booking confirmation successful");
-  // }
-  //   });
+  const navigate = useNavigate();
 
-  // const handleBooking = (event) => {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const name= form.name.value;
-  //   const email = form.email.value;
-  //   const item = form.item.value;
-  //   const price = form.price.value;
+  const handleBooking = event=> {
+    event.preventDefault();
+    const form = event.target;
+    const name= form.name.value;
+    const email = form.email.value;
+    const item = form.item.value;
+    const price = form.price.value;
 
-  //   const booking ={
-  //     name,
-  //     email,
-  //     itemName:item,
-  //     price
-  //   }
+    const booking ={
+      name,
+      email,
+      itemName:item,
+      price
+    }
+    fetch('http://localhost:5000/bookings', {
+      method: 'POST',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(booking)
+  })
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
+
+          if (data.acknowledged) {
+              toast.success('Booking confirmed');
+              navigate('/Dashboard');
+          }
+          else {
+              toast.error(data.message);
+          }
+      })
       
-  //   // console.log(booking)
-  // };
+    console.log(booking)
+  };
 
   return (
     <>
@@ -53,7 +58,7 @@ const BookingModal = () => {
               ✕
             </label>
             <h3 className="text-lg font-bold">Bikes</h3>
-            <form  className="grid grid-cols-1 mt-10 gap-3">
+            <form onSubmit={handleBooking} className="grid grid-cols-1 mt-10 gap-3">
               <input
                 type="text"
                 name="name"
@@ -77,7 +82,7 @@ const BookingModal = () => {
                 className="input input-bordered w-full"
               />
               <input
-                type="text"
+                type="number"
                 name="price"
                 defaultValue={user?.price}
                 readOnly

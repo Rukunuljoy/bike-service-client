@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { useLoaderData } from 'react-router-dom';
-import BookingModal from './BookingModal';
 
 const RoyalDetail = () => {
     const {img,title,sellerName,resalePrice,originalPrice,users,dates,description} = useLoaderData();
@@ -14,14 +13,12 @@ const RoyalDetail = () => {
           <h2 className="card-title">{title}</h2>
           <p>Seller-Name: {sellerName}</p>
           <p>Description: {description}</p>
-          <p>SellerName :{sellerName}</p>
           <p>ResalePrice: {resalePrice}</p>
           <p>originalPrice: {originalPrice}</p>
           <p>Years-of-use: {users}</p>
           <p>Post-date:{dates}</p>
         </div>
       </div>
-      
         </div>
     );
 };

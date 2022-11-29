@@ -4,8 +4,8 @@ import YamahaCard from './YamahaCard';
 
 const Yamaha = () => {
 
-    const {data:yamaha = []} = useQuery({
-        queryKey: ['yamahaBike'],
+    const {data:yamahas = []} = useQuery({
+        queryKey: ['yamahas'],
         queryFn:async() =>{
            const res= await fetch('http://localhost:5000/yamahaBike')
            const data = await res.json();
@@ -14,11 +14,11 @@ const Yamaha = () => {
         })
 
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-10 mt-10'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 m-20'>
             {
-                yamaha.map(ser=><YamahaCard
-                key={ser._id}
-                ser={ser}
+                yamahas.map(yamaha=><YamahaCard
+                    key={yamaha._id}
+                    yamaha={yamaha}
                 ></YamahaCard>)
             }
         </div>

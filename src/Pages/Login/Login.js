@@ -1,14 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assert/login/download.png'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useToken from '../../Hooks/UseToken';
 
 const Login = () => {
   const {login} = useContext(AuthContext)
+  const [userLogin,setUserLogin] = useState('');
+  const [token] = useToken(userLogin)
   const location = useLocation()
   const navigate = useNavigate()
 
   const from = location.state?.from?.pathname || '/';
+
+  if(token){
+    navigate(from, {replace:true})
+  }
 
   const handleLogin= event =>{
     event.preventDefault();
@@ -20,7 +27,8 @@ const Login = () => {
     .then(result=>{
       const user = result.user;
       console.log(user)
-      navigate(from, {replace:true})
+      setUserLogin(email)
+      
     })
     .catch(err=>{
       console.log(err)
@@ -40,13 +48,13 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="text" name='email' placeholder="email" className="input input-bordered" required/>
+              <input type="email" name='email' placeholder="email" className="input input-bordered" required/>
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="text" name='password' placeholder="password" className="input input-bordered" required/>
+              <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
               <label className="label">
                 <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
               </label>

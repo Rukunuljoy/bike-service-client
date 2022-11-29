@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import royal from "../../../assert/royal/royal6.png";
+import royal from "../../../assert/royal/royal2.jpg";
 import suzuki from "../../../assert/su/su1..jpg";
 import yamaha from "../../../assert/yama/yama1.jpg";
 
