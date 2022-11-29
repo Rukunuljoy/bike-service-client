@@ -1,14 +1,11 @@
 import React from 'react';
-import Royal from '../Royal/Royal';
-import Suzuki from '../Suzuki/Suzuki';
-import Yamaha from '../Yamaha/Yamaha';
 
 const AllProduct = () => {
     return (
         <div>
-            <Royal></Royal>
+            {/* <Royal></Royal>
             <Yamaha></Yamaha>
-            <Suzuki></Suzuki>
+            <Suzuki></Suzuki> */}
         </div>
     );
 };

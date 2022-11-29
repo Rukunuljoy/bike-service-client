@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assert/login/download.png'
@@ -5,11 +6,13 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useToken from '../../Hooks/UseToken';
 
 const Login = () => {
-  const {login} = useContext(AuthContext)
+  const {login, providerLogin} = useContext(AuthContext)
   const [userLogin,setUserLogin] = useState('');
   const [token] = useToken(userLogin)
   const location = useLocation()
   const navigate = useNavigate()
+
+  const googleProvider = new GoogleAuthProvider();
 
   const from = location.state?.from?.pathname || '/';
 
@@ -22,6 +25,19 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
+    const handleGoogleSignIn = () => {
+      providerLogin(googleProvider)
+          .then(res => {
+              const name = res.user.displayName;
+              const email = res.user.email;
+              const role = 'Buyer';
+              console.log(res.user.email)
+              // saveUser(name, email, role);
+          })
+          .catch(e => console.error(e))
+  }
+
 
     login(email,password)
     .then(result=>{

@@ -2,10 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
-import Suzuki from "../../Pages/Suzuki/Suzuki";
-import Yamaha from "../../Pages/Yamaha/Yamaha";
 import RoyalDetail from "../../Pages/RoyalDetail/RoyalDetail"
-import Royal from "../../Pages/Royal/Royal";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SuzukiDetail from "../../Pages/SuzukiDetail/SuzukiDetail";
@@ -16,10 +13,13 @@ import AddProduct from "../../Pages/Dashboard/SellerDashboard/AddProduct";
 import MyProduct from "../../Pages/Dashboard/SellerDashboard/MyProduct";
 import MyBuyer from "../../Pages/Dashboard/SellerDashboard/MyBuyer";
 import AdminRoute from "../AdminRoute/AdminRoute"
-import Payment from "../../Pages/Dashboard/Payment/Payment";
+import Payment from "../../Pages/Dashboard/Payment/CheckOut";
 import About from "../../Pages/Home/About/About";
 import AllProduct from "../../Pages/AllProduct/AllProduct";
 import Shop from "../../Pages/Shop/Shop";
+import Royal from "../../Pages/Items/Royal/Royal";
+import Suzuki from "../../Pages/Items/Suzuki/Suzuki";
+import Yamaha from "../../Pages/Items/Yamaha/Yamaha";
 
 
 export const router = createBrowserRouter([
@@ -52,26 +52,28 @@ export const router = createBrowserRouter([
                 element:<SignUp></SignUp>
             },
             {
-                path:'/royal',
-                element:<PrivateRoute><Royal></Royal></PrivateRoute>
+                path: '/royal',
+                element:<Royal></Royal>
             },
+            
             {
                 path:'/royalDetails/:id',
                 element:<RoyalDetail></RoyalDetail>,
                 loader:({params})=>fetch(`http://localhost:5000/royalBikes/${params.id}`)
             },
             {
-                path:'/suzuki',
-                element:<PrivateRoute><Suzuki></Suzuki></PrivateRoute>
+                path: '/suzuki',
+                element:<Suzuki></Suzuki>
             },
+            
             {
                 path:'/suzukiDetail/:id',
                 element:<SuzukiDetail/>,
                 loader:({params})=>fetch(`http://localhost:5000/suzukiBike/${params.id}`)
             },
             {
-                path:'/Yamaha',
-                element:<PrivateRoute><Yamaha></Yamaha></PrivateRoute>
+                path: '/yamaha',
+                element:<Yamaha></Yamaha>
             },
             {
                 path:'/yamahaDetail/:id',
