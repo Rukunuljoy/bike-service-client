@@ -52,8 +52,8 @@ const MyProduct = () => {
                                 merged?.map((book, i) => <tr key={i}>
                                     <th>{i + 1}</th>
                                     <td><img className='w-20' src={book.img} alt="" /></td>
-                                    <td>{book.BikeName}</td>
-                                    <td>${book.currentPrice}</td>
+                                    <td>{book.title}</td>
+                                    <td>${book.originalPrice}</td>
 
                                 </tr>)
                             }

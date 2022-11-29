@@ -2,11 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
-import RoyalDetail from "../../Pages/RoyalDetail/RoyalDetail"
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import SuzukiDetail from "../../Pages/SuzukiDetail/SuzukiDetail";
-import YamahaDetail from "../../Pages/YamahaDetail/YamahaDetail";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellerDashboard/AddProduct";
@@ -15,11 +12,12 @@ import MyBuyer from "../../Pages/Dashboard/SellerDashboard/MyBuyer";
 import AdminRoute from "../AdminRoute/AdminRoute"
 import Payment from "../../Pages/Dashboard/Payment/CheckOut";
 import About from "../../Pages/Home/About/About";
-import AllProduct from "../../Pages/AllProduct/AllProduct";
 import Shop from "../../Pages/Shop/Shop";
 import Royal from "../../Pages/Items/Royal/Royal";
 import Suzuki from "../../Pages/Items/Suzuki/Suzuki";
 import Yamaha from "../../Pages/Items/Yamaha/Yamaha";
+import Blogs from "../../Pages/Blogs.js/Blogs";
+import CarDetails from "../../Pages/Items/CarDetails/CarDetails";
 
 
 export const router = createBrowserRouter([
@@ -40,9 +38,10 @@ export const router = createBrowserRouter([
                 element:<Shop></Shop>
             },
             {
-                path: '/allProduct',
-                element:<AllProduct></AllProduct>
+                path: '/blogs',
+                element:<Blogs></Blogs>
             },
+           
             {
                 path: '/login',
                 element:<Login></Login>
@@ -53,31 +52,31 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/royal',
-                element:<Royal></Royal>
+                element:<PrivateRoute><Royal></Royal></PrivateRoute>
             },
             
             {
                 path:'/royalDetails/:id',
-                element:<RoyalDetail></RoyalDetail>,
+                element:<CarDetails></CarDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/royalBikes/${params.id}`)
             },
             {
                 path: '/suzuki',
-                element:<Suzuki></Suzuki>
+                element:<PrivateRoute><Suzuki></Suzuki></PrivateRoute>
             },
             
             {
                 path:'/suzukiDetail/:id',
-                element:<SuzukiDetail/>,
+                element:<CarDetails></CarDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/suzukiBike/${params.id}`)
             },
             {
                 path: '/yamaha',
-                element:<Yamaha></Yamaha>
+                element:<PrivateRoute><Yamaha></Yamaha></PrivateRoute>
             },
             {
                 path:'/yamahaDetail/:id',
-                element:<YamahaDetail/>,
+                element:<CarDetails/>,
                 loader:({params})=>fetch(`http://localhost:5000/yamahaBike/${params.id}`)
             },
         ]

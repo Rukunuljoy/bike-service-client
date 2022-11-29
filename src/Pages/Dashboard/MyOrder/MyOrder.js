@@ -44,15 +44,15 @@ const MyOrders = () => {
                 <td>
                   <img className="w-20" src={booking.img} alt="" />
                 </td>
-                <td>{booking.bikeName}</td>
-                <td>${booking.currentPrice}</td>
+                <td>{booking.title}</td>
+                <td>${booking.originalPrice}</td>
                 <td>
-                  {booking.currentPrice && !booking.paid && (
+                  {booking.originalPrice && !booking.paid && (
                     <Link to={`/dashboard/payment/${booking._id}`}>
                       <button className="btn">PAY NOW</button>
                     </Link>
                   )}
-                  {booking.currentPrice && booking.paid && (
+                  {booking.originalPrice && booking.paid && (
                     <span className="text-2xl text-orange-700 font-bold">
                       Paid
                     </span>

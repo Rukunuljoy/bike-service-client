@@ -6,10 +6,10 @@ import Items from '../Items/Items';
 
 const Yamaha = () => {
 
-    const [nameOfCar, setCarName] = useState(null);
+    const [nameOfBike, setBikeName] = useState(null);
 
-    const { data: cars = [] } = useQuery({
-        queryKey: ['cars'],
+    const { data: bikes = [] } = useQuery({
+        queryKey: ['bikes'],
         queryFn: () => fetch('http://localhost:5000/yamahaBike')
             .then(res => res.json())
     });
@@ -30,10 +30,10 @@ const Yamaha = () => {
             <div>
 
                 {
-                    cars.map(car => <Items
-                        key={car._id}
-                        car={car}
-                        setCarName={setCarName}
+                    bikes.map(bike => <Items
+                        key={bike._id}
+                        bike={bike}
+                        setBikeName={setBikeName}
                         users={users}
                     ></Items>)
                 }
@@ -41,9 +41,9 @@ const Yamaha = () => {
 
             <div>
                 {
-                    nameOfCar &&
+                    nameOfBike &&
                     <BookingItems
-                        nameOfCar={nameOfCar}
+                        nameOfBike={nameOfBike}
                     ></BookingItems>
                 }
             </div>

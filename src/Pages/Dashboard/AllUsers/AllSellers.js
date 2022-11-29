@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
+
 const AllSellers = () => {
     const { data: sellers = [] } = useQuery({
         queryKey: ['sellers'],

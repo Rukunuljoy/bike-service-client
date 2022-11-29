@@ -4,10 +4,10 @@ import BookingItems from '../Bookings/BookingItems';
 import Items from '../Items/Items';
 
 const Royal = () => {
-    const [nameOfCar, setCarName] = useState(null);
+    const [nameOfBike, setBikeName] = useState(null);
 
-    const { data: cars = [] } = useQuery({
-        queryKey: ['cars'],
+    const { data: bikes = [] } = useQuery({
+        queryKey: ['bikes'],
         queryFn: () => fetch('http://localhost:5000/royalBikes')
             .then(res => res.json())
     })
@@ -15,17 +15,17 @@ const Royal = () => {
         <>
         <div>
             {
-                cars.map(car => <Items
-                    key={car._id}
-                    car={car}
-                    setCarName={setCarName}
+                bikes.map(bike => <Items
+                    key={bike._id}
+                    bike={bike}
+                    setBikeName={setBikeName}
                 ></Items>)
             }
         </div>
         {
-            nameOfCar &&
+            nameOfBike &&
             <BookingItems
-                nameOfCar={nameOfCar}
+                nameOfBike={nameOfBike}
             ></BookingItems>
         }
 

@@ -13,7 +13,7 @@ const CheckoutForm = ({ booking }) => {
     const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
-    const { currentPrice, email, name, _id } = booking;
+    const { originalPrice, email, name, _id } = booking;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -23,11 +23,11 @@ const CheckoutForm = ({ booking }) => {
                 "Content-Type": "application/json",
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify({ currentPrice }),
+            body: JSON.stringify({ originalPrice }),
         })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
-    }, [currentPrice]);
+    }, [originalPrice]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -76,7 +76,7 @@ const CheckoutForm = ({ booking }) => {
             console.log('card info', card);
             // store payment info in the database
             const payment = {
-                currentPrice,
+              originalPrice,
                 transactionId: paymentIntent.id,
                 email,
                 bookingId: _id

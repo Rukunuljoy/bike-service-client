@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthProvider';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const CarDetails = () => {
-    const { carName, img, currentPrice } = useLoaderData();
+    const { title, img, resalePrice } = useLoaderData();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const CarDetails = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const carName = form.carName.value;
+        const title = form.bikeName.value;
         const phone = form.phone.value;
         const address = form.address.value;
 
@@ -23,8 +23,8 @@ const CarDetails = () => {
             name,
             email,
             img,
-            currentPrice,
-            carName,
+            resalePrice,
+            title,
             phone,
             address
         }
@@ -55,7 +55,7 @@ const CarDetails = () => {
             <div className='flex justify-center'>
                 <img className='' src={img} alt="" />
             </div>
-            <h1 className='text-center text-3xl mt-8'>{carName}</h1>
+            <h1 className='text-center text-3xl mt-8'>{title}</h1>
             <div>
                 <label htmlFor="booking-modal" className="btn btn-outline hover:bg-[#ff4605]">Book Now</label>
                 <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -69,9 +69,9 @@ const CarDetails = () => {
 
                             <input name='email' type="text" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered w-full" disabled />
 
-                            <input name='carName' type="text" defaultValue={carName} placeholder="Car Name" className="input input-bordered w-full " disabled />
+                            <input name='carName' type="text" defaultValue={title} placeholder="Car Name" className="input input-bordered w-full " disabled />
 
-                            <input name='carPrice' type="text" defaultValue={currentPrice} placeholder='Car Price' className="input input-bordered w-full " disabled />
+                            <input name='carPrice' type="text" defaultValue={resalePrice} placeholder='Car Price' className="input input-bordered w-full " disabled />
 
                             <input name='phone' type="tel" placeholder="Phone Number" className="input input-bordered w-full" required />
 

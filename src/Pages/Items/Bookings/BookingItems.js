@@ -3,28 +3,28 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
-const BookingItems = ({ nameOfCar }) => {
+const BookingItems = ({ nameOfBike }) => {
 
     const { user } = useContext(AuthContext);
-    const { img, carName, currentPrice } = nameOfCar
+    const { img, title, originalPrice } = nameOfBike
     const navigate = useNavigate();
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const carName = form.carName.value;
+        const title = form.title.value;
         const phone = form.phone.value;
-        const address = form.address.value;
+        const location = form.location.value;
 
         const booking = {
             name,
             email,
             img,
-            currentPrice,
-            carName,
+            originalPrice,
+            title,
             phone,
-            address
+            location
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',
@@ -62,9 +62,9 @@ const BookingItems = ({ nameOfCar }) => {
 
                         <input name='email' type="text" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered w-full" disabled />
 
-                        <input name='carName' type="text" defaultValue={carName} placeholder="Car Name" className="input input-bordered w-full " disabled />
+                        <input name='carName' type="text" defaultValue={title} placeholder="Car Name" className="input input-bordered w-full " disabled />
 
-                        <input name='carPrice' type="text" defaultValue={currentPrice} placeholder='Car Price' className="input input-bordered w-full " disabled />
+                        <input name='carPrice' type="text" defaultValue={originalPrice} placeholder='Car Price' className="input input-bordered w-full " disabled />
 
                         <input name='phone' type="tel" placeholder="Phone Number" className="input input-bordered w-full" required />
 
