@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../context/AuthProvider';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import SellerLink from '../../Shared/SellerLink/SellerLink';
 
 const MyProduct = () => {
