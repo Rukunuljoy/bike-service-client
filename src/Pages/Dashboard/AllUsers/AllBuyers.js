@@ -27,7 +27,7 @@ const AllBuyers = () => {
                 })
         }
     }
-
+    
 
     return (
         <div className='border my-20'>
