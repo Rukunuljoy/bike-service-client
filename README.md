@@ -8,3 +8,7 @@
 * my website header footer and outlet is meaningful.
 ### haeder
 * my website design is unique.
+### email
+*admin@gmail.com
+### password
+*admin12

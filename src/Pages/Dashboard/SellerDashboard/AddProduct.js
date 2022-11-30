@@ -21,6 +21,7 @@ const AddProduct = () => {
         navigate("/dashboard/myProduct");
       });
   };
+
   return (
     <div>
       <SellerLink></SellerLink>

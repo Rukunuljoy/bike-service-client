@@ -36,7 +36,7 @@ const AllBuyers = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
+                            <th>title</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Delete</th>
@@ -45,7 +45,7 @@ const AllBuyers = () => {
                     <tbody>
                         {buyers.map((user, i) => <tr key={i}>
                             <th>{i + 1}</th>
-                            <td>{user?.name}</td>
+                            <td>{user?.title}</td>
                             <td>{user?.email}</td>
                             <td>{user?.role}</td>
                             <td><button

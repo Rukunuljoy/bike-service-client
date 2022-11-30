@@ -62,9 +62,9 @@ const BookingItems = ({ nameOfBike }) => {
 
                         <input name='email' type="text" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered w-full" disabled />
 
-                        <input name='carName' type="text" defaultValue={title} placeholder="Car Name" className="input input-bordered w-full " disabled />
+                        <input name='title' type="text" defaultValue={title} placeholder="Car Name" className="input input-bordered w-full " disabled />
 
-                        <input name='carPrice' type="text" defaultValue={originalPrice} placeholder='Car Price' className="input input-bordered w-full " disabled />
+                        <input name='originalPrice' type="text" defaultValue={originalPrice} placeholder='Car Price' className="input input-bordered w-full " disabled />
 
                         <input name='phone' type="tel" placeholder="Phone Number" className="input input-bordered w-full" required />
 
