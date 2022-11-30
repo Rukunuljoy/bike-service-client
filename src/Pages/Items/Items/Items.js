@@ -33,10 +33,6 @@ const Items = ({ bike, setBikeName }) => {
                                     onClick={() => setBikeName(bike)}
                                 >Book Now</label>
                             </div>
-
-                            <div>
-                                <Link to={`/${bike.categoryName}s/${bike._id}`}> <button className="btn btn-outline hover:bg-[#ff4605] banner-title">More Details</button></Link>
-                            </div>
                         </div>
                     </div>
                 </div>

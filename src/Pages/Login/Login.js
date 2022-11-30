@@ -20,12 +20,17 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  const handleLogin = data => {
-    login(data.email,data.password)
+  const handleLogin = event => {
+    event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+    login(email,password)
     .then(result => {
         const user = result.user;
         console.log(user);
-        setUserLogin(data.email);
+        setUserLogin(event.email);
+        navigate('/')
     })
     .catch(err => console.error(err))
 
@@ -54,6 +59,7 @@ const Login = () => {
       })
           .then(res => res.json())
           .then(data => {
+            console.log(data)
             setUserLogin(email);
           })
   }
